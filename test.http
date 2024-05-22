@@ -1,0 +1,50 @@
+GET http://localhost:3000/api HTTP/1.1
+###
+//register new user
+POST http://localhost:3000/api/users/register HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "test2",
+    "lastName": "test",
+    "email": "test2@mail.com",
+    "password": "testpassword"
+}
+###
+// login user
+POST http://localhost:3000/api/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test2@mail.com",
+    "password": "testpassword"
+}
+###
+// creating a post when not registered/signed in
+POST http://localhost:3000/api/posts HTTP/1.1
+content-type: application/json
+
+{
+    "author": "Ms Luvhengo",
+    "title": "Water and Sanitation Department",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean egestas nulla et ante varius dignissim. Morbi justo mauris, mattis vel eros in, imperdiet accumsan erat. Mauris et elementum odio. Nulla ullamcorper faucibus tincidunt. Pellentesque enim mi, tincidunt ut ex ut, malesuada convallis neque. Duis condimentum fringilla varius. Ut luctus pulvinar justo non venenatis."
+}
+###
+// creating post as an authorized user
+POST http://localhost:3000/api/posts HTTP/1.1
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQG1haWwuY29tIiwidXNlcmlkIjoiNjYxZWY0ZmJmYTI0N2ViNTI1MTMwOWQ3IiwiaWF0IjoxNzEzMzExNzQ3LCJleHAiOjE3MTMzMTUzNDd9.x3RnNUrzKrZ_A7C3Ag-3elinvyF1vFjHojpl1i1UB1Y
+
+{
+    "author": "Ms Mashudu",
+    "title": "Education Department",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean egestas nulla et ante varius dignissim. Morbi justo mauris, mattis vel eros in, imperdiet accumsan erat. Mauris et elementum odio. Nulla ullamcorper faucibus tincidunt. Pellentesque enim mi, tincidunt ut ex ut, malesuada convallis neque. Duis condimentum fringilla varius. Ut luctus pulvinar justo non venenatis."
+}
+###
+// get all posts
+GET http://localhost:3000/api/posts HTTP/1.1
+###
+
+// delete a post
+DELETE http://localhost:3000/api/posts/661f10f4713525b1bb0c8cc2 HTTP/1.1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQG1haWwuY29tIiwidXNlcmlkIjoiNjYxZWY0ZmJmYTI0N2ViNTI1MTMwOWQ3IiwiaWF0IjoxNzEzMzExNzQ3LCJleHAiOjE3MTMzMTUzNDd9.x3RnNUrzKrZ_A7C3Ag-3elinvyF1vFjHojpl1i1UB1Y
