@@ -36,6 +36,9 @@ router.get('', (req, res) => {
     res.json({
       message: "Posts found",
       posts:posts,
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Error fetching posts" });
     });
   });
 });
@@ -53,13 +56,19 @@ router.post("", checkauth, (req, res) => {
       message: "Post created",
       post: post,
     });
-  });
+  })
+.catch((err) => {
+  res.status(500).json({ message: "Error creating post" });
+});;
 });
 
 router.delete('/:id', checkauth, (req, res) => {
   Post.deleteOne({ _id: req.params.id }).then((result) => {
     res.status(200).json({ message: "Post deleted" });
-  });
+  })
+  .catch((err) => {
+    res.status(500).json({ message: "Error deleting post" });
+  });;
 });
 
 module.exports = router;
