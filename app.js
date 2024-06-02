@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const cors = require("cors");
 
-//Load SSL certificate
+// //Load SSL certificate
 const cert = fs.readFileSync("keys/certificate.pem");
 const options = {
   server: { sslCA: cert },
@@ -19,7 +19,7 @@ const connstring =
 const postRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 
-mongoose.connect(connstring)
+mongoose.connect(connstring, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected");
   })

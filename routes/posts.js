@@ -35,11 +35,11 @@ router.get('', (req, res) => {
   Post.find().then((posts) => {
     res.json({
       message: "Posts found",
-      posts:posts,
-    })
-    .catch((err) => {
-      res.status(500).json({ message: "Error fetching posts" });
+      posts: posts,
     });
+  })
+  .catch((err) => {
+    res.status(500).json({ message: "Error fetching posts" });
   });
 });
 
